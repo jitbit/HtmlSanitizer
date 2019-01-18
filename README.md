@@ -15,7 +15,7 @@ Usage:
 </script>
 ```
 
-The sanitizer uses [whitelisting](https://en.wikipedia.org/wiki/Whitelisting) (as opposed to "blacklisting")
+The sanitizer uses [whitelisting](https://en.wikipedia.org/wiki/Whitelisting) (as opposed to "blacklisting") and uses browser/DOM to parse the html by creating an invisible "sandboxed" iframe.
 
 ## Tags allowed by default
 
