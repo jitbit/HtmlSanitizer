@@ -34,3 +34,7 @@ It uses browser/DOM to parse the html by creating an invisible "sandboxed" ifram
 `color, background-color, font-size, text-align, text-decoration, font-weight`
 
 Allowed tags, styles and attributes are listed in `tagWhiteList`, `attributeWhiteList` and `cssWhiteLisst` variables which you can modify (until we add a proper API).
+
+## Browser support
+
+Suported by all major browsers, IE10 and higher.
