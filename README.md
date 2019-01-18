@@ -1,8 +1,8 @@
-# HtmlSanitizer
+# JS Html Sanitizer
 
-Very fast client-side HTML Sanitizer (i.e. needs a browser, won't work in server-side/backend enviroments like `Node` etc.).
+Very fast client-side HTML Sanitizer (web-only, i.e. needs a browser, won't work in server-side/backend enviroments like `Node` etc.).
 
-> Please note: to prevent XSS attacks you should always sanitize input **on the server** too. *Never trust the client!*
+> Please note: to prevent XSS attacks you should always sanitize input **on the server too**. *Never trust the client!*
 
 Usage:
 
