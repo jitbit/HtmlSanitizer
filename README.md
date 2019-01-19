@@ -1,6 +1,6 @@
 # JS Html Sanitizer
 
-Very fast client-side HTML Sanitizer (web-only, i.e. needs a browser, won't work in server-side/backend enviroments like `Node` etc.).
+Very fast client-side HTML Sanitizer (web-only, i.e. needs a browser, won't work in `Node`).
 
 > Please note: to prevent XSS attacks you should always sanitize input **on the server too**. *Never trust the client!*
 
@@ -19,7 +19,7 @@ The sanitizer uses [whitelisting](https://en.wikipedia.org/wiki/Whitelisting) (a
 
 ## Speed
 
-It uses browser/DOM to parse the html by creating an invisible "sandboxed" iframe (hense the browser "front-end only" requirement) which makes it **much faster** than many "pure JavaScript" sanitizers.
+It uses browser/DOM to parse the html by creating an invisible "sandboxed" iframe (hence the browser "front-end only" requirement) which makes it **much faster** than many "pure JavaScript" sanitizers.
 
 ## Tags allowed by default
 
