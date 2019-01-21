@@ -47,7 +47,7 @@ var HtmlSanitizer = new (function () {
 
 				//remove useless empty spans (lots of those when pasting from MS Outlook)
 				if ((node.tagName == "SPAN" || node.tagName == "B" || node.tagName == "I" || node.tagName == "U")
-					&& $.trim(node.innerHTML) == "") {
+					&& node.innerHTML.trim() == "") {
 					return document.createDocumentFragment();
 				}
 
@@ -60,9 +60,11 @@ var HtmlSanitizer = new (function () {
 					var attr = node.attributes[i];
 					if (attributeWhitelist_[attr.name]) {
 						if (attr.name == "style") {
-							for (s in node.style)
-								if (cssWhitelist_[s])
-									newNode.style[s] = node.style[s];
+							for (s = 0; s < node.style.length; s++) {
+								var styleName = node.style[s];
+								if (cssWhitelist_[styleName])
+									newNode.style.setProperty(styleName, node.style.getPropertyValue(styleName));
+							}
 						}
 						else {
 							if (uriAttributes_[attr.name]) { //if this is a "uri" attribute, that can have "javascript:" or something

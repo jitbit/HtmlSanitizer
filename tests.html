@@ -6,7 +6,6 @@
     <title>HtmlSanitizer test</title>
     <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.1.css">
     <script src="HtmlSanitizer.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <div id="qunit"></div>
@@ -18,7 +17,7 @@
         assert.equal(HtmlSanitizer.SanitizeHtml("<div> <script> Alert('xss!'); </scr" + "ipt> </div>"), "<div>  </div>");
         assert.equal(HtmlSanitizer.SanitizeHtml("<p class='MsoNormal' style='margin-bottom:10.0pt;line-height:115%'><b>Official - SBU&nbsp;</b><o:p></o:p></p>"), "<p><b>Official - SBU&nbsp;</b></p>");
         assert.equal(HtmlSanitizer.SanitizeHtml("<span style='color: rgb(102, 102, 102); font-size: 8px;'><i>NOTE</i></span>"), "<span style=\"color: rgb(102, 102, 102); font-size: 8px;\"><i>NOTE</i></span>");
-        assert.equal(HtmlSanitizer.SanitizeHtml("<B>Neo Anderson</B><font onclick='alert(sdfds)' style='font-family:Arial;font-size:10pt;font-weight:bold;'>Superhero</font><font style='font-family:Arial;'>555.555.5558</font><B>-</B><font style=font-family:Arial;font-size:12pt;font-weight:bold;>-</font>"), "<b>Neo Anderson</b><font style=\"font-weight: bold; font-size: 10pt;\">Superhero</font><font>555.555.5558</font><b>-</b><font style=\"font-weight: bold; font-size: 12pt;\">-</font>");
+        assert.equal(HtmlSanitizer.SanitizeHtml("<B>Neo Anderson</B><font onclick='alert(sdfds)' style='font-family:Arial;font-size:10pt;font-weight:bold;'>Superhero</font><font style='font-family:Arial;'>555.555.5558</font><B>-</B><font style=font-family:Arial;font-size:12pt;font-weight:bold;>-</font>"), "<b>Neo Anderson</b><font style=\"font-size: 10pt; font-weight: bold;\">Superhero</font><font>555.555.5558</font><b>-</b><font style=\"font-size: 12pt; font-weight: bold;\">-</font>");
         assert.equal(HtmlSanitizer.SanitizeHtml("<a href='javascript:alert(\"asdf\")'>blahblah</a>"), "<a>blahblah</a>");
         assert.equal(HtmlSanitizer.SanitizeHtml("<a href='http://blah'>blahblah</a>"), "<a href=\"http://blah\">blahblah</a>");
         assert.equal(HtmlSanitizer.SanitizeHtml("<b style='text-align:right;float:right'>blahblah</a>"), "<b style=\"text-align: right;\">blahblah</b>");
