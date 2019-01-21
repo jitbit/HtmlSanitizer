@@ -33,6 +33,14 @@ It uses browser/DOM to parse the html by creating an invisible "sandboxed" ifram
 
 `color, background-color, font-size, text-align, text-decoration, font-weight`
 
+## Schemas allowed by default
+
+`http, https`
+
+(allowed in 'src', 'href' and similar "uri-attributes". To clean up stuff like `<a href='javascript:alert()'></a>`)
+
+## Other notes
+
 Allowed tags, styles and attributes are listed in `tagWhiteList`, `attributeWhiteList` and `cssWhiteLisst` variables which you can modify (until we add a proper API).
 
 ## Browser support
