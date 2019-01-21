@@ -45,7 +45,7 @@ Allowed tags, styles and attributes are listed in `tagWhiteList`, `attributeWhit
 
 ## Browser support
 
-Suported by all major browsers, IE10 and higher.
+Supported by all major browsers, IE10 and higher.
 
 ## BUT WHY?
 
