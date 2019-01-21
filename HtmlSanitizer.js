@@ -20,6 +20,10 @@ var HtmlSanitizer = new (function () {
 
 	var cssWhitelist_ = { 'color': true, 'background-color': true, 'font-size': true, 'text-align': true, 'text-decoration': true, 'font-weight': true };
 
+	var schemaWhiteList_ = [ 'http:', 'https:' ]; //which "protocols" are allowed in "href", "src" etc
+
+	var uriAttributes_ = { 'src': true, 'href': true, 'action': true };
+
 	this.SanitizeHtml = function(input) {
 		//firefox "bogus node" workaround
 		if (input == "<br>") return "";
@@ -60,8 +64,13 @@ var HtmlSanitizer = new (function () {
 								if (cssWhitelist_[s])
 									newNode.style[s] = node.style[s];
 						}
-						else
+						else {
+							if (uriAttributes_[attr.name]) { //if this is a "uri" attribute, that can have "javascript:" or something
+								if (!startsWithAny(attr.value, schemaWhiteList_))
+									continue;
+							}
 							newNode.setAttribute(attr.name, attr.value);
+						}
 					}
 				}
 				for (i = 0; i < node.childNodes.length; i++) {
@@ -79,5 +88,14 @@ var HtmlSanitizer = new (function () {
 		return resultElement.innerHTML
 			.replace(/<br[^>]*>(\S)/g, "<br>\n$1")
 			.replace(/div><div/g, "div>\n<div"); //replace is just for cleaner code
+	}
+
+	function startsWithAny(str, substrings) {
+		for (var i = 0; i < substrings.length; i++) {
+			if (str.indexOf(substrings[i]) == 0) {
+				return true;
+			}
+		}
+		return false;
 	}
 });
