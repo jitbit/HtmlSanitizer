@@ -10,7 +10,7 @@ Usage:
 <script src="HtmlSanitizer.js"></script>
 
 <script>
-    var input = HtmlSanitizer.SanitizeHtml("<div> <script> Alert('xss!'); </sc" + "ript> </div>");
+    var html = HtmlSanitizer.SanitizeHtml("<div> <script> Alert('xss!'); </sc" + "ript> </div>");
     //input == "<div>  </div>";
 </script>
 ```
