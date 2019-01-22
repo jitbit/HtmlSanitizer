@@ -19,7 +19,7 @@ The sanitizer uses [whitelisting](https://en.wikipedia.org/wiki/Whitelisting) (a
 
 ## Speed
 
-It uses browser/DOM to parse the html by creating an invisible "sandboxed" iframe (hence the browser "front-end only" requirement) which makes it **much faster** than many "pure JavaScript" sanitizers.
+It uses browser/DOM to parse the html by creating an invisible "sandboxed" iframe (hence the browser "front-end only" requirement) which makes it **much faster** than many "pure JavaScript" sanitizers. Santizing bbc.co.uk homepage gives us ~370 sanitations per second on an i5 core CPU in Firefox (tested in `benchmark.js`)
 
 ## Tags allowed by default
 
