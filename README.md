@@ -8,6 +8,7 @@ Usage:
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/jitbit/HtmlSanitizer@master/HtmlSanitizer.js"></script>
+<!-- or simply install locally: <script src="HtmlSanitizer.js"></script> -->
 
 <script>
     var html = HtmlSanitizer.SanitizeHtml("<div> <script> Alert('xss!'); </sc" + "ript> </div>");
