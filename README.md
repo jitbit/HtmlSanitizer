@@ -39,9 +39,15 @@ It uses browser/DOM to parse the html by creating an invisible "sandboxed" ifram
 
 (allowed in 'src', 'href' and similar "uri-attributes". To clean up stuff like `<a href='javascript:alert()'></a>`)
 
-## Other notes
+## Configuring
 
-Allowed tags, styles and attributes are listed in `tagWhiteList`, `attributeWhiteList` and `cssWhiteLisst` variables which you can modify (until we add a proper API).
+Allowed tags, styles and attributes are listed in `AllowedTags`, `AllowedAttributes` and `AllowedCssStyles` properties. To disallow a tag remove it from the dictionary like this:
+
+`delete HtmlSanitizer.AllowedTags['table']`
+
+To add an allowed tag:
+
+`HtmlSanitizer.AllowedTags['script'] = true;`
 
 ## Browser support
 

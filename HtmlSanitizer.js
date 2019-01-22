@@ -100,4 +100,9 @@ var HtmlSanitizer = new (function () {
 		}
 		return false;
 	}
+
+	this.AllowedTags = tagWhitelist_;
+	this.AllowedAttributes = attributeWhitelist_;
+	this.AllowedCssStyles = cssWhitelist_;
+	this.AllowedSchemas = schemaWhiteList_;
 });
