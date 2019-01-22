@@ -1,6 +1,6 @@
 # JS Html Sanitizer
 
-Very fast client-side HTML Sanitizer (front-end only, i.e. "needs a browser", won't work in `Node`).
+Very fast client-side HTML Sanitizer (front-end only, i.e. "needs a browser", won't work in `Node`) to prevent XSS and unwanted tags in UGC.
 
 > Please note: to prevent XSS attacks you should always sanitize input **on the server too**. *Never trust the client!*
 
@@ -15,11 +15,11 @@ Usage:
 </script>
 ```
 
-The sanitizer uses [whitelisting](https://en.wikipedia.org/wiki/Whitelisting) (as opposed to "blacklisting") approach to clear out everything that's not allowed.
+The sanitizer uses [whitelisting](https://en.wikipedia.org/wiki/Whitelisting) approach (as opposed to "blacklisting") to clean out everything that's not allowed.
 
 ## Speed
 
-It uses browser/DOM to parse the html by creating an invisible "sandboxed" iframe (hence the browser "front-end only" requirement) which makes it **much faster** than many "pure JavaScript" sanitizers. Santizing bbc.co.uk homepage gives us ~370 sanitations per second on an i5 core CPU in Firefox (tested in `benchmark.js`)
+It uses browser/DOM to parse the html by creating an invisible "sandboxed" iframe (hence the browser "front-end only" requirement) which makes it **much faster** than "pure JavaScript" sanitizers. Santizing *bbc.co.uk* homepage gives us ~370 sanitations per second on an i5 core CPU in Firefox Quantum (tested via `benchmark.js`)
 
 ## Tags allowed by default
 
@@ -41,7 +41,7 @@ It uses browser/DOM to parse the html by creating an invisible "sandboxed" ifram
 
 ## Configuring
 
-Allowed tags, styles and attributes are listed in `AllowedTags`, `AllowedAttributes` and `AllowedCssStyles` public properties. To disallow a tag remove it from the dictionary like this:
+Allowed tags, attributes and styles are listed in `AllowedTags`, `AllowedAttributes` and `AllowedCssStyles` public properties. To disallow a tag remove it from the dictionary like this:
 
 ```javascript
 delete HtmlSanitizer.AllowedTags['table']
