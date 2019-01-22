@@ -7,7 +7,7 @@ Very fast client-side HTML Sanitizer (front-end only, i.e. "needs a browser", wo
 Usage:
 
 ```html
-<script src="HtmlSanitizer.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jitbit/HtmlSanitizer@master/HtmlSanitizer.js"></script>
 
 <script>
     var html = HtmlSanitizer.SanitizeHtml("<div> <script> Alert('xss!'); </sc" + "ript> </div>");
