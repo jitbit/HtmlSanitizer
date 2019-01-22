@@ -43,11 +43,15 @@ It uses browser/DOM to parse the html by creating an invisible "sandboxed" ifram
 
 Allowed tags, styles and attributes are listed in `AllowedTags`, `AllowedAttributes` and `AllowedCssStyles` public properties. To disallow a tag remove it from the dictionary like this:
 
-`delete HtmlSanitizer.AllowedTags['table']`
+```javascript
+delete HtmlSanitizer.AllowedTags['table']
+```
 
 To add an allowed tag:
 
-`HtmlSanitizer.AllowedTags['script'] = true;`
+```javascript
+HtmlSanitizer.AllowedTags['script'] = true;
+```
 
 ## Browser support
 
