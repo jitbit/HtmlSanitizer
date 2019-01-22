@@ -11,7 +11,7 @@ Usage:
 
 <script>
     var html = HtmlSanitizer.SanitizeHtml("<div> <script> Alert('xss!'); </sc" + "ript> </div>");
-    //input == "<div>  </div>";
+    //html == "<div>  </div>";
 </script>
 ```
 
