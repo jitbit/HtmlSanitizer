@@ -20,7 +20,7 @@ var HtmlSanitizer = new (function () {
 
 	var cssWhitelist_ = { 'color': true, 'background-color': true, 'font-size': true, 'text-align': true, 'text-decoration': true, 'font-weight': true };
 
-	var schemaWhiteList_ = [ 'http:', 'https:' ]; //which "protocols" are allowed in "href", "src" etc
+	var schemaWhiteList_ = [ 'http:', 'https:', 'data:' ]; //which "protocols" are allowed in "href", "src" etc
 
 	var uriAttributes_ = { 'src': true, 'href': true, 'action': true };
 
