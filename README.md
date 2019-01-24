@@ -38,7 +38,7 @@ Tested on `https://www.bbc.co.uk` homepage - the page is sanitized **~370 times 
 
 ## Schemas allowed by default
 
-`http, https`
+`http:, https:, data:`
 
 (allowed in 'src', 'href' and similar "uri-attributes". To clean up stuff like `<a href='javascript:alert()'></a>`)
 
