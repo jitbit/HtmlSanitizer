@@ -68,7 +68,7 @@ var HtmlSanitizer = new (function () {
 						}
 						else {
 							if (uriAttributes_[attr.name]) { //if this is a "uri" attribute, that can have "javascript:" or something
-								if (!startsWithAny(attr.value, schemaWhiteList_))
+								if (attr.value.indexOf(":") > -1 && !startsWithAny(attr.value, schemaWhiteList_))
 									continue;
 							}
 							newNode.setAttribute(attr.name, attr.value);
