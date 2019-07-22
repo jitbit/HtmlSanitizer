@@ -13,6 +13,10 @@
     <script src="https://code.jquery.com/qunit/qunit-2.9.1.js"></script>
 
     <script>
+    
+    //sample to add partial URI's whitlist 
+    //HtmlSanitizer.AllowedAddresses.push('domain.com');
+
     QUnit.test("Html Sanitizer", function( assert ) {
         assert.equal(HtmlSanitizer.SanitizeHtml("<div> <script> Alert('xss!'); </scr" + "ipt> </div>"), "<div>  </div>");
         assert.equal(HtmlSanitizer.SanitizeHtml("<p class='MsoNormal' style='margin-bottom:10.0pt;line-height:115%'><b>Official - SBU&nbsp;</b><o:p></o:p></p>"), "<p><b>Official - SBU&nbsp;</b></p>");

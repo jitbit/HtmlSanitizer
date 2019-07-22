@@ -22,7 +22,9 @@ var HtmlSanitizer = new (function () {
 
 	var schemaWhiteList_ = [ 'http:', 'https:', 'data:', 'm-files:', 'file:', 'ftp:' ]; //which "protocols" are allowed in "href", "src" etc
 
-	var uriAttributes_ = { 'href': true, 'action': true };
+	var uriAttributes_ = { 'href': true, 'action': true, 'src': true };
+	
+	var uriContainsWhiteList_ = [ ];
 
 	this.SanitizeHtml = function(input) {
 		input = input.trim();
@@ -71,7 +73,7 @@ var HtmlSanitizer = new (function () {
 						}
 						else {
 							if (uriAttributes_[attr.name]) { //if this is a "uri" attribute, that can have "javascript:" or something
-								if (attr.value.indexOf(":") > -1 && !startsWithAny(attr.value, schemaWhiteList_))
+								if (attr.value.indexOf(":") > -1 && !URIstartsWithAndContains(attr.value))
 									continue;
 							}
 							newNode.setAttribute(attr.name, attr.value);
@@ -95,17 +97,30 @@ var HtmlSanitizer = new (function () {
 			.replace(/div><div/g, "div>\n<div"); //replace is just for cleaner code
 	}
 
-	function startsWithAny(str, substrings) {
-		for (var i = 0; i < substrings.length; i++) {
-			if (str.indexOf(substrings[i]) == 0) {
-				return true;
+	function URIstartsWithAndContains(str) {
+		
+		var flag = false;
+		
+		//verify protocols
+		for (var i = 0; i < schemaWhiteList_.length; i++) {
+			if (str.indexOf(schemaWhiteList_[i]) == 0) {
+				flag = true;
 			}
 		}
-		return false;
+		
+		//verify url partials
+		for (var i = 0; i < uriContainsWhiteList_.length; i++) {
+			if (str.indexOf(uriContainsWhiteList_[i]) == -1) {
+				flag = false;
+			}
+		}
+		
+		return flag;
 	}
 
 	this.AllowedTags = tagWhitelist_;
 	this.AllowedAttributes = attributeWhitelist_;
 	this.AllowedCssStyles = cssWhitelist_;
 	this.AllowedSchemas = schemaWhiteList_;
+	this.AllowedAddresses = uriContainsWhiteList_;
 });
