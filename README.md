@@ -56,6 +56,12 @@ To add an allowed tag:
 HtmlSanitizer.AllowedTags['script'] = true;
 ```
 
+To allow only specific domains on "uri-attributes"
+
+```javascript
+HtmlSanitizer.AllowedAddresses.push('domain.com');
+```
+
 ## Browser support
 
 Supported by all major browsers, IE10 and higher.
