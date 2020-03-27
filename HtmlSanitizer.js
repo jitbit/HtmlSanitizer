@@ -2,7 +2,7 @@
 
 //homepage https://github.com/jitbit/HtmlSanitizer
 
-//License: GNU GPL v3 https://github.com/jitbit/HtmlSanitizer/blob/master/LICENSE
+//License: MIT https://github.com/jitbit/HtmlSanitizer/blob/master/LICENSE
 
 console.log('Sanitizer loading');
 
