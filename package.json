@@ -1,0 +1,24 @@
+{
+  "name": "@jitbit/htmlsanitizer",
+  "version": "1.0.0",
+  "description": "Client-side (browser-based) HTML sanitizer for front end",
+  "main": "HtmlSanitizer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jitbit/HtmlSanitizer.git"
+  },
+  "keywords": [
+    "html",
+    "sanitize",
+    "sanitizer"
+  ],
+  "author": "Alex Yumashev <jitbit@jitbit.com> (https://www.jitbit.com/alexblog/about/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jitbit/HtmlSanitizer/issues"
+  },
+  "homepage": "https://github.com/jitbit/HtmlSanitizer#readme"
+}
