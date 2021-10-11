@@ -4,12 +4,22 @@ Very fast client-side HTML Sanitizer (front-end only, i.e. "needs a browser", wo
 
 > Please note: to prevent XSS attacks you should always sanitize input **on the server too**. *Never trust the client!*
 
-Usage:
+### Install
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/jitbit/HtmlSanitizer@master/HtmlSanitizer.js"></script>
 <!-- or simply install locally: <script src="HtmlSanitizer.js"></script> -->
+```
 
+or
+
+```
+npm install @jitbit/htmlsanitizer
+```
+
+### Usage:
+
+```html
 <script>
     var html = HtmlSanitizer.SanitizeHtml("<div> <script> Alert('xss!'); </sc" + "ript> </div>");
     //html == "<div>  </div>";
