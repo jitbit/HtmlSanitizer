@@ -1,6 +1,6 @@
 # JS Html Sanitizer
 
-Very fast client-side HTML Sanitizer (front-end only, i.e. "needs a browser", won't work in `Node`) to prevent XSS and unwanted tags in UGC.
+Very fast client-side HTML Sanitizer (front-end only, i.e. "needs a browser", won't work in `Node`) to prevent XSS and unwanted tags in UGC. Vanilla JS, no dependencies.
 
 > Please note: to prevent XSS attacks you should always sanitize input **on the server too**. *Never trust the client!*
 
@@ -16,6 +16,8 @@ or
 ```
 npm install @jitbit/htmlsanitizer
 ```
+
+(simply puts the script into `/node_modules`)
 
 ### Usage:
 
