@@ -21,6 +21,8 @@
         assert.equal(HtmlSanitizer.SanitizeHtml("<a href='javascript:alert(\"asdf\")'>blahblah</a>"), "<a>blahblah</a>");
         assert.equal(HtmlSanitizer.SanitizeHtml("<a href='http://blah'>blahblah</a>"), "<a href=\"http://blah\">blahblah</a>");
         assert.equal(HtmlSanitizer.SanitizeHtml("<b style='text-align:right;float:right'>blahblah</a>"), "<b style=\"text-align: right;\">blahblah</b>");
+		assert.equal(HtmlSanitizer.SanitizeHtml("<style>test</style>"), "");
+		assert.equal(HtmlSanitizer.SanitizeHtml("<style>test</style>", ["STYLE"]), "<style>test</style>");
     });
     </script>
     </body>
