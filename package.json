@@ -1,6 +1,6 @@
 {
   "name": "@jitbit/htmlsanitizer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Client-side (browser-based) HTML sanitizer for front end",
   "main": "HtmlSanitizer.js",
   "scripts": {
