@@ -22,7 +22,9 @@ var HtmlSanitizer = new (function () {
 
 	var uriAttributes_ = { 'href': true, 'action': true };
 
-	this.SanitizeHtml = function(input) {
+	this.SanitizeHtml = function (input, extraTags) {
+		extraTags = (extraTags && extraTags instanceof Array) || [];
+
 		input = input.trim();
 		if (input == "") return ""; //to save performance and not create iframe
 
@@ -44,7 +46,7 @@ var HtmlSanitizer = new (function () {
 		function makeSanitizedCopy(node) {
 			if (node.nodeType == Node.TEXT_NODE) {
 				var newNode = node.cloneNode(true);
-			} else if (node.nodeType == Node.ELEMENT_NODE && (tagWhitelist_[node.tagName] || contentTagWhiteList_[node.tagName])) {
+			} else if (node.nodeType == Node.ELEMENT_NODE && (tagWhitelist_[node.tagName] || contentTagWhiteList_[node.tagName] || extraTags.indexOf(node.tagName))) {
 
 				//remove useless empty spans (lots of those when pasting from MS Outlook)
 				if ((node.tagName == "SPAN" || node.tagName == "B" || node.tagName == "I" || node.tagName == "U")
