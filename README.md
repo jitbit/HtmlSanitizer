@@ -50,7 +50,7 @@ Tested on `https://www.bbc.co.uk` homepage - the page is sanitized **~370 times 
 
 ## Schemas allowed by default
 
-`http:, https:, data:`
+`http:, https:, data:, mailto:`
 
 (allowed in 'src', 'href' and similar "uri-attributes". To clean up stuff like `<a href='javascript:alert()'></a>`)
 
@@ -62,13 +62,13 @@ Allowed tags, attributes and styles are listed in `AllowedTags`, `AllowedAttribu
 delete HtmlSanitizer.AllowedTags['table']
 ```
 
-To add an allowed tag:
+To add an allowed tag globally:
 
 ```javascript
 HtmlSanitizer.AllowedTags['script'] = true;
 ```
 
-To allow a tag only once, during invocation
+To allow an extra tag only once, during invocation
 
 ```javascript
 var html = HtmlSanitizer.SanitizeHtml("<head><style> test </style></head>", ["head", "style"]);
