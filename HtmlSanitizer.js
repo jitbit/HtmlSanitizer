@@ -23,7 +23,7 @@ var HtmlSanitizer = new (function () {
 	var uriAttributes_ = { 'href': true, 'action': true };
 
 	this.SanitizeHtml = function (input, extraTags) {
-		extraTags = (extraTags && extraTags instanceof Array) || [];
+		extraTags = (extraTags && extraTags instanceof Array) ? extraTags : [];
 
 		input = input.trim();
 		if (input == "") return ""; //to save performance and not create iframe
