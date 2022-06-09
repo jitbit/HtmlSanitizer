@@ -13,6 +13,12 @@ Very fast client-side HTML Sanitizer (front-end only, i.e. "needs a browser", wo
 
 or
 
+```html
+<script src="https://unpkg.com/@jitbit/htmlsanitizer@latest/HtmlSanitizer.js"></script>
+```
+
+or
+
 ```
 npm install @jitbit/htmlsanitizer
 ```
