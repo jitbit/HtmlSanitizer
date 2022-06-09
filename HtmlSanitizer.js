@@ -44,6 +44,12 @@ var HtmlSanitizer = new (function () {
 		if (iframedoc.body == null) iframedoc.write("<body></body>"); // null in IE
 		iframedoc.body.innerHTML = input;
 
+		//DOM clobbering check
+		if (iframedoc.body.tagName !== 'BODY')
+			iframedoc.body.remove();
+		if (typeof iframedoc.createElement !== 'function')
+			iframedoc.createElement.remove();
+
 		function makeSanitizedCopy(node) {
 			if (node.nodeType == Node.TEXT_NODE) {
 				var newNode = node.cloneNode(true);
