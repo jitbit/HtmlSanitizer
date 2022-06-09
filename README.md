@@ -68,6 +68,12 @@ To add an allowed tag:
 HtmlSanitizer.AllowedTags['script'] = true;
 ```
 
+To allow a tag only once, during invocation
+
+```javascript
+var html = HtmlSanitizer.SanitizeHtml("<head><style> test </style></head>", ["head", "style"]);
+```
+
 ## Browser support
 
 Supported by all major browsers, IE10 and higher.
