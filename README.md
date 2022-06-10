@@ -78,19 +78,19 @@ Fastest is HtmlSanitizer
 Allowed tags, attributes and styles are listed in `AllowedTags`, `AllowedAttributes` and `AllowedCssStyles` public properties. To disallow a tag remove it from the dictionary like this:
 
 ```javascript
-delete HtmlSanitizer.AllowedTags['table']
+delete HtmlSanitizer.AllowedTags['TABLE']; //mind the uppercase
 ```
 
 To add an allowed tag globally:
 
 ```javascript
-HtmlSanitizer.AllowedTags['script'] = true;
+HtmlSanitizer.AllowedTags['SCRIPT'] = true; //mind the uppercase
 ```
 
 To allow an extra tag only once, during invocation
 
 ```javascript
-var html = HtmlSanitizer.SanitizeHtml("<head><style> test </style></head>", ["head", "style"]);
+var html = HtmlSanitizer.SanitizeHtml("<style> test </style>", ["STYLE"]); //mind the uppercase
 ```
 
 ## Browser support
