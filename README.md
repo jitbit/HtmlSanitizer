@@ -1,6 +1,6 @@
 # JS Html Sanitizer
 
-Client-side HTML Sanitizer (front-end only, i.e. "needs a browser", won't work in `Node`) to prevent XSS and unwanted tags in UGC. Vanilla JS, no dependencies. Works even in IE (duh).
+Client-side HTML Sanitizer (front-end only, i.e. "needs a browser", won't work in `Node`) to prevent XSS and unwanted tags in UGC.
 
 * Very fast (8000 ops/sec)
 * Very small (1.7kb *unminified!*)
