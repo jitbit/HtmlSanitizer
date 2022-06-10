@@ -30,6 +30,7 @@
 <p></p>`);
 		assert.equal(HtmlSanitizer.SanitizeHtml("<mycustomtag>something</mycustomtag>"), "");
 		assert.equal(HtmlSanitizer.SanitizeHtml("<mycustomtag>something</mycustomtag>", ["MYCUSTOMTAG"]), "<mycustomtag>something</mycustomtag>");
+		assert.equal(HtmlSanitizer.SanitizeHtml("<mycustomtag mycustomattr='blin'>something</mycustomtag>", ["MYCUSTOMTAG"], ["mycustomattr"]), "<mycustomtag mycustomattr=\"blin\">something</mycustomtag>");
 		assert.equal(HtmlSanitizer.SanitizeHtml("<span>something<span><span> <style></style> </span> </span></span>"), "<span>something</span>");
 		
 		HtmlSanitizer.AllowedTags["MYCUSTOMTAG"] = true;
