@@ -30,6 +30,7 @@
 <p></p>`);
 		assert.equal(HtmlSanitizer.SanitizeHtml("<mycustomtag>something</mycustomtag>"), "");
 		assert.equal(HtmlSanitizer.SanitizeHtml("<mycustomtag>something</mycustomtag>", ["MYCUSTOMTAG"]), "<mycustomtag>something</mycustomtag>");
+		assert.equal(HtmlSanitizer.SanitizeHtml("<span>something<span><span> <style></style> </span> </span></span>"), "<span>something</span>");
     });
     </script>
     </body>

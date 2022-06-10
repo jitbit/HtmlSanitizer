@@ -43,12 +43,6 @@ var HtmlSanitizer = new (function () {
 				var newNode = node.cloneNode(true);
 			} else if (node.nodeType == Node.ELEMENT_NODE && (_tagWhitelist[node.tagName] || _contentTagWhiteList[node.tagName] || extraTags.indexOf(node.tagName) > -1)) {
 
-				//remove useless empty spans (lots of those when pasting from MS Outlook)
-				if ((node.tagName == "SPAN" || node.tagName == "B" || node.tagName == "I" || node.tagName == "U")
-					&& node.innerHTML.trim() == "") {
-					return doc.createDocumentFragment();
-				}
-
 				if (_contentTagWhiteList[node.tagName])
 					newNode = doc.createElement('DIV'); //convert to DIV
 				else
@@ -77,6 +71,13 @@ var HtmlSanitizer = new (function () {
 					var subCopy = makeSanitizedCopy(node.childNodes[i]);
 					newNode.appendChild(subCopy, false);
 				}
+
+				//remove useless empty spans (lots of those when pasting from MS Outlook)
+				if ((newNode.tagName == "SPAN" || newNode.tagName == "B" || newNode.tagName == "I" || newNode.tagName == "U")
+					&& newNode.innerHTML.trim() == "") {
+					return doc.createDocumentFragment();
+				}
+				
 			} else {
 				newNode = doc.createDocumentFragment();
 			}
