@@ -2,7 +2,7 @@
 
 Client-side HTML Sanitizer (front-end only, i.e. "needs a browser", won't work in `Node`) to prevent XSS and unwanted tags in UGC. Vanilla JS, no dependencies. Works even in IE (duh).
 
-* Very fast (7000 ops/sec)
+* Very fast (8000 ops/sec)
 * Very small (1.7kb *unminified!*)
 * Zero dependency, vanilla JS, works even in IE (duh)
 
@@ -50,8 +50,8 @@ Comparing HtmlSanitizer vs DOMPurify benchmark:
 
 ```
 starting benchmark...
-HtmlSanitizer x 7,092 ops/sec ±4.52% (55 runs sampled)
-DOMPurify x 4,479 ops/sec ±4.48% (58 runs sampled)
+HtmlSanitizer x 8,048 ops/sec ±3.37% (44 runs sampled)
+DOMPurify x 5,195 ops/sec ±3.30% (57 runs sampled)
 Fastest is HtmlSanitizer
 ```
 
