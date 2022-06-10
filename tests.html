@@ -31,6 +31,13 @@
 		assert.equal(HtmlSanitizer.SanitizeHtml("<mycustomtag>something</mycustomtag>"), "");
 		assert.equal(HtmlSanitizer.SanitizeHtml("<mycustomtag>something</mycustomtag>", ["MYCUSTOMTAG"]), "<mycustomtag>something</mycustomtag>");
 		assert.equal(HtmlSanitizer.SanitizeHtml("<span>something<span><span> <style></style> </span> </span></span>"), "<span>something</span>");
+		
+		HtmlSanitizer.AllowedTags["MYCUSTOMTAG"] = true;
+		assert.equal(HtmlSanitizer.SanitizeHtml("<mycustomtag>something</mycustomtag>"), "<mycustomtag>something</mycustomtag>");
+		delete HtmlSanitizer.AllowedTags["MYCUSTOMTAG"];
+		assert.equal(HtmlSanitizer.SanitizeHtml("<mycustomtag>something</mycustomtag>"), "");
+		
+		assert.equal(HtmlSanitizer.SanitizeHtml("<form>something</form>"), "<div>something</div>");
     });
     </script>
     </body>
