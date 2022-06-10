@@ -12,7 +12,6 @@ Client-side HTML Sanitizer (front-end only, i.e. "needs a browser", won't work i
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/jitbit/HtmlSanitizer@master/HtmlSanitizer.js"></script>
-<!-- or simply install locally: <script src="HtmlSanitizer.js"></script> -->
 ```
 
 or
@@ -26,7 +25,6 @@ or
 ```
 npm install @jitbit/htmlsanitizer
 ```
-
 (simply puts the script into `/node_modules`)
 
 ### Usage:
