@@ -25,6 +25,11 @@
         assert.equal(HtmlSanitizer.SanitizeHtml("<b style='text-align:right;float:right'>blahblah</a>"), "<b style=\"text-align: right;\">blahblah</b>");
 		assert.equal(HtmlSanitizer.SanitizeHtml("<style>test</style>"), "");
 		assert.equal(HtmlSanitizer.SanitizeHtml("<style>test</style>", ["STYLE"]), "<style>test</style>");
+		assert.equal(HtmlSanitizer.SanitizeHtml(`<p class="MsoNormal"><b><span onclick='blahblah' style="color:green">test</span></b><o:p></o:p></p>
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>`), `<p><b><span style="color: green;">test</span></b></p>
+<p></p>`);
+		assert.equal(HtmlSanitizer.SanitizeHtml("<mycustomtag>something</mycustomtag>"), "");
+		assert.equal(HtmlSanitizer.SanitizeHtml("<mycustomtag>something</mycustomtag>", ["MYCUSTOMTAG"]), "<mycustomtag>something</mycustomtag>");
     });
     </script>
     </body>
