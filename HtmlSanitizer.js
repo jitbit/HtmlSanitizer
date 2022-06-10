@@ -38,6 +38,12 @@ var HtmlSanitizer = new (function () {
 
 		var doc = _parser.parseFromString(input, "text/html");
 
+		//DOM clobbering check (damn you firefox)
+		if (doc.body.tagName !== 'BODY')
+			doc.body.remove();
+		if (typeof doc.createElement !== 'function')
+			doc.createElement.remove();
+
 		function makeSanitizedCopy(node) {
 			if (node.nodeType == Node.TEXT_NODE) {
 				var newNode = node.cloneNode(true);
