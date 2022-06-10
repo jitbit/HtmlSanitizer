@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://cdn.jsdelivr.net/gh/cure53/DOMPurify/dist/purify.js"></script>
+		<script src="HtmlSanitizer.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/benchmark/2.1.4/benchmark.min.js"></script>
+	</head>
+	<body>
+		<pre id="mylog"></pre>
+
+		<script>
+			var testcontent = `<form id="action_online_form" method="post" action="./../adm/index.php?i=acp_main&amp;sid=534a8e9c03d8251f56daeb0d857cc062&amp;mode=main" data-ajax="true">
+						<dl>
+							<dt><label for="action_online">Vynulovat rekord uživatelů online</label><br><span class="responsive-hide">&nbsp;</span></dt>
+							<dd><input type="hidden" name="action" value="online"><input class="button2" type="submit" id="action_online" name="action_online" value="Spustit nyní"></dd>
+						</dl>
+					</form>`;
+
+			mylog = (...args) => {
+				args.map(arg => document.querySelector("#mylog").innerHTML += arg + '<br>')
+			}
+
+			mylog("starting...");
+
+			var suite = new Benchmark.Suite;
+
+			// add tests
+			suite.add('HtmlSanitizer', function () {
+				var str = HtmlSanitizer.SanitizeHtml(testcontent);
+			})
+			.add('DOMPurify', function () {
+				DOMPurify.sanitize(testcontent, { ALLOWED_TAGS: ['b'] });
+			})
+			// add listeners
+			.on('cycle', function (event) {
+				mylog(String(event.target));
+			})
+			.on('complete', function () {
+				mylog('Fastest is ' + this.filter('fastest').map('name'));
+			})
+			// run async
+			.run({ 'async': true });
+		</script>
+	</body>
+</html>

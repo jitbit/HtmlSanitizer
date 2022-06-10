@@ -22,6 +22,8 @@ var HtmlSanitizer = new (function () {
 
 	var uriAttributes_ = { 'href': true, 'action': true };
 
+	var _parser = new DOMParser();
+
 	this.SanitizeHtml = function (input, extraTags, extraAttributes) {
 		extraTags = (extraTags && extraTags instanceof Array) ? extraTags : [];
 		extraAttributes = (extraAttributes && extraAttributes instanceof Array) ? extraAttributes : [];
@@ -32,23 +34,9 @@ var HtmlSanitizer = new (function () {
 		//firefox "bogus node" workaround
 		if (input == "<br>") return "";
 
-		var iframe = document.createElement('iframe');
-		if (iframe['sandbox'] === undefined) {
-			alert('Your browser does not support sandboxed iframes. Please upgrade to a modern browser.');
-			return '';
-		}
-		iframe['sandbox'] = 'allow-same-origin';
-		iframe.style.display = 'none';
-		document.body.appendChild(iframe); // necessary so the iframe contains a document
-		var iframedoc = iframe.contentDocument || iframe.contentWindow.document;
-		if (iframedoc.body == null) iframedoc.write("<body></body>"); // null in IE
-		iframedoc.body.innerHTML = input;
+		if (input.indexOf("<body")==-1) input = "<body>" + input + "</body>"; //add "body" otherwise some tags are skipped, like <style>
 
-		//DOM clobbering check
-		if (iframedoc.body.tagName !== 'BODY')
-			iframedoc.body.remove();
-		if (typeof iframedoc.createElement !== 'function')
-			iframedoc.createElement.remove();
+		var iframedoc = _parser.parseFromString(input, "text/html");
 
 		function makeSanitizedCopy(node) {
 			if (node.nodeType == Node.TEXT_NODE) {
@@ -96,7 +84,7 @@ var HtmlSanitizer = new (function () {
 		};
 
 		var resultElement = makeSanitizedCopy(iframedoc.body);
-		document.body.removeChild(iframe);
+		
 		return resultElement.innerHTML
 			.replace(/<br[^>]*>(\S)/g, "<br>\n$1")
 			.replace(/div><div/g, "div>\n<div"); //replace is just for cleaner code

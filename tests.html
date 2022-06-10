@@ -14,8 +14,8 @@
 
     <script>
     QUnit.test("Html Sanitizer", function( assert ) {
-		assert.equal(HtmlSanitizer.SanitizeHtml("<p>Hello world!</p><img name=createElement>"), "<p>Hello world!</p>");
-		assert.equal(HtmlSanitizer.SanitizeHtml("<p>Hello world!</p><img name=body>"), "<p>Hello world!</p>");
+		assert.equal(HtmlSanitizer.SanitizeHtml("<p>Hello world!</p><img name=createElement>"), "<p>Hello world!</p><img>");
+		assert.equal(HtmlSanitizer.SanitizeHtml("<p>Hello world!</p><img name=body>"), "<p>Hello world!</p><img>");
         assert.equal(HtmlSanitizer.SanitizeHtml("<div> <script> Alert('xss!'); </scr" + "ipt> </div>"), "<div>  </div>");
         assert.equal(HtmlSanitizer.SanitizeHtml("<p class='MsoNormal' style='margin-bottom:10.0pt;line-height:115%'><b>Official - SBU&nbsp;</b><o:p></o:p></p>"), "<p><b>Official - SBU&nbsp;</b></p>");
         assert.equal(HtmlSanitizer.SanitizeHtml("<span style='color: rgb(102, 102, 102); font-size: 8px;'><i>NOTE</i></span>"), "<span style=\"color: rgb(102, 102, 102); font-size: 8px;\"><i>NOTE</i></span>");

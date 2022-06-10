@@ -36,11 +36,20 @@ npm install @jitbit/htmlsanitizer
 
 The sanitizer uses [whitelisting](https://en.wikipedia.org/wiki/Whitelisting) approach (as opposed to "blacklisting") to clean out everything that's not allowed.
 
-## Speed
+## Speed & Benchmarks
 
-It uses browser/DOM to parse the html by creating an invisible "sandboxed" iframe (hence the browser "front-end only" requirement) which makes it **much faster** than "pure JavaScript" sanitizers.
+It uses browser/DOM to parse the html by using `DOMParser` object (hence the browser "front-end only" requirement) which makes it **much faster** than "pure JavaScript" sanitizers.
 
 Tested on `https://www.bbc.co.uk` homepage - the page is sanitized **~370 times per second** on an i5 core CPU in Firefox Quantum (tested via `benchmark.js`)
+
+Comparing HtmlSanitizer vs DOMPurify benchmark:
+
+```
+starting benchmark...
+HtmlSanitizer x 7,092 ops/sec ±4.52% (55 runs sampled)
+DOMPurify x 4,479 ops/sec ±4.48% (58 runs sampled)
+Fastest is HtmlSanitizer
+```
 
 ## Tags allowed by default
 
