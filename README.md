@@ -31,14 +31,15 @@ npm install @jitbit/htmlsanitizer
 
 ```html
 <script>
-    //run with default settings
     var html;
+    
+    //run with default settings
     html = HtmlSanitizer.SanitizeHtml("<div><script>alert('xss!');</sc" + "ript></div>"); //returns "<div></div>";
     html = HtmlSanitizer.SanitizeHtml("<a onclick=\"alert('xss')\"></a>"); //returns "<a></a>";
     html = HtmlSanitizer.SanitizeHtml("<a href=\"javascript:alert('xss')\"></a>"); //returns "<a></a>";
     
     //permanently allow a tag for all future invocations
-    HtmlSanitizer.AllowedTags['FORM'] = true;   
+    HtmlSanitizer.AllowedTags['FORM'] = true;
     html = HtmlSanitizer.SanitizeHtml("<form></form>"); //returns "<form></form>";
     
     //allow somthing only once by specifying a selector
