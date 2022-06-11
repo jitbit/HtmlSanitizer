@@ -25,10 +25,7 @@ const HtmlSanitizer = new (function () {
 
 	const _parser = new DOMParser();
 
-	this.SanitizeHtml = function (input, extraTags, extraAttributes) {
-		extraTags = (extraTags && extraTags instanceof Array) ? extraTags : [];
-		extraAttributes = (extraAttributes && extraAttributes instanceof Array) ? extraAttributes : [];
-
+	this.SanitizeHtml = function (input, extraSelector) {
 		input = input.trim();
 		if (input == "") return ""; //to save performance
 
@@ -49,7 +46,7 @@ const HtmlSanitizer = new (function () {
 			let newNode;
 			if (node.nodeType == Node.TEXT_NODE) {
 				newNode = node.cloneNode(true);
-			} else if (node.nodeType == Node.ELEMENT_NODE && (_tagWhitelist[node.tagName] || _contentTagWhiteList[node.tagName] || extraTags.indexOf(node.tagName) > -1)) {
+			} else if (node.nodeType == Node.ELEMENT_NODE && (_tagWhitelist[node.tagName] || _contentTagWhiteList[node.tagName] || (extraSelector && node.matches(extraSelector)))) { //is tag allowed?
 
 				if (_contentTagWhiteList[node.tagName])
 					newNode = doc.createElement('DIV'); //convert to DIV
@@ -58,7 +55,7 @@ const HtmlSanitizer = new (function () {
 
 				for (let i = 0; i < node.attributes.length; i++) {
 					let attr = node.attributes[i];
-					if (_attributeWhitelist[attr.name] || extraAttributes.indexOf(attr.name) > -1) {
+					if (_attributeWhitelist[attr.name]) {
 						if (attr.name == "style") {
 							for (let s = 0; s < node.style.length; s++) {
 								let styleName = node.style[s];

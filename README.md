@@ -85,10 +85,10 @@ To add an allowed tag globally:
 HtmlSanitizer.AllowedTags['SCRIPT'] = true; //mind the uppercase
 ```
 
-To allow an extra tag only once, during invocation
+To allow an extra tag only once during invocation - specify extra selector to allow in the second parameter
 
 ```javascript
-var html = HtmlSanitizer.SanitizeHtml("<style> test </style>", ["STYLE"]); //mind the uppercase
+var html = HtmlSanitizer.SanitizeHtml("<input type=checkbox>", "input[type=checkbox]");
 ```
 
 ## Browser support
