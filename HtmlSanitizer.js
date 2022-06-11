@@ -1,4 +1,4 @@
-//JavaScript HTML Sanitizer v2.0.1, (c) Alexander Yumashev, Jitbit Software.
+//JavaScript HTML Sanitizer v2.0.2, (c) Alexander Yumashev, Jitbit Software.
 
 //homepage https://github.com/jitbit/HtmlSanitizer
 
