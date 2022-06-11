@@ -31,8 +31,18 @@ npm install @jitbit/htmlsanitizer
 
 ```html
 <script>
-    var html = HtmlSanitizer.SanitizeHtml("<div> <script> Alert('xss!'); </sc" + "ript> </div>");
-    //html == "<div>  </div>";
+    //run with default settings
+    var html;
+    html = HtmlSanitizer.SanitizeHtml("<div><script>alert('xss!');</sc" + "ript></div>"); //returns "<div></div>";
+    html = HtmlSanitizer.SanitizeHtml("<a onclick=\"alert('xss')\"></a>"); //returns "<a></a>";
+    html = HtmlSanitizer.SanitizeHtml("<a href=\"javascript:alert('xss')\"></a>"); //returns "<a></a>";
+    
+    //permanently allow a tag for all future invocations
+    HtmlSanitizer.AllowedTags['FORM'] = true;   
+    html = HtmlSanitizer.SanitizeHtml("<form></form>"); //returns "<form></form>";
+    
+    //allow somthing only once by specifying a selector
+    html = HtmlSanitizer.SanitizeHtml("<input type=checkbox>", "input[type=checkbox]"); //returns "<input type=\"checkbox\">";
 </script>
 ```
 
