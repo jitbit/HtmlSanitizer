@@ -78,13 +78,13 @@ Fastest is HtmlSanitizer
 
 ## Schemas allowed by default
 
-`http:, https:, data:, mailto:`
+`http:, https:, data:, m-files:, file:, ftp:, mailto:, pw:`
 
 (allowed in 'src', 'href' and similar "uri-attributes". To clean up stuff like `<a href='javascript:alert()'></a>`)
 
 ## Configuring
 
-Allowed tags, attributes and styles are listed in `AllowedTags`, `AllowedAttributes` and `AllowedCssStyles` public properties. To disallow a tag remove it from the dictionary like this:
+Allowed tags, attributes, schemas and styles are listed in `AllowedTags`, `AllowedAttributes`, `AllowedSchemas` and `AllowedCssStyles` public properties. To disallow a tag remove it from the dictionary like this:
 
 ```javascript
 delete HtmlSanitizer.AllowedTags['TABLE']; //mind the uppercase
