@@ -1,0 +1,5 @@
+{
+    "name": "liquidedge-app/htmlsanitizer",
+    "description": "Client-side HTML Sanitizer",
+    "autoload": {}
+}
