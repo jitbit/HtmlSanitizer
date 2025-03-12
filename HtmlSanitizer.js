@@ -92,7 +92,6 @@ const HtmlSanitizer = new (function () {
 		let resultElement = makeSanitizedCopy(doc.body);
 		
 		return resultElement.innerHTML
-			.replace(/<br[^>]*>(\S)/g, "<br>\n$1")
 			.replace(/div><div/g, "div>\n<div"); //replace is just for cleaner code
 	}
 
