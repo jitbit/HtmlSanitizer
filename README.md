@@ -11,13 +11,7 @@ Client-side HTML Sanitizer (front-end only, i.e. "needs a browser", won't work i
 ### Install
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/jitbit/HtmlSanitizer@master/HtmlSanitizer.js"></script>
-```
-
-or
-
-```html
-<script src="https://unpkg.com/@jitbit/htmlsanitizer@latest/HtmlSanitizer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jitbit/htmlsanitizer@latest/HtmlSanitizer.min.js"></script>
 ```
 
 or
