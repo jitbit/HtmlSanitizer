@@ -1,4 +1,4 @@
-//JavaScript HTML Sanitizer v2.0.3, (c) Alexander Yumashev, Jitbit Software.
+//JavaScript HTML Sanitizer v2.0.4, (c) Alexander Yumashev, Jitbit Software.
 
 //homepage https://github.com/jitbit/HtmlSanitizer
 
@@ -91,8 +91,12 @@ const HtmlSanitizer = new (function () {
 
 		let resultElement = makeSanitizedCopy(doc.body);
 		
-		return resultElement.innerHTML
-			.replace(/div><div/g, "div>\n<div"); //replace is just for cleaner code
+		// Get sanitized inner HTML
+		let sanitizedHtml = resultElement.innerHTML;
+		
+		// Use DOMParser for safe beautification instead of regex replacement
+		let formatDoc = _parser.parseFromString("<body>" + sanitizedHtml + "</body>", "text/html");
+		return formatDoc.body.innerHTML;
 	}
 
 	function startsWithAny(str, substrings) {
@@ -108,4 +112,4 @@ const HtmlSanitizer = new (function () {
 	this.AllowedAttributes = _attributeWhitelist;
 	this.AllowedCssStyles = _cssWhitelist;
 	this.AllowedSchemas = _schemaWhiteList;
-});
+})();
