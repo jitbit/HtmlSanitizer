@@ -109,3 +109,8 @@ const HtmlSanitizer = new (function () {
 	this.AllowedCssStyles = _cssWhitelist;
 	this.AllowedSchemas = _schemaWhiteList;
 });
+
+// Export for use in modules
+if (typeof module !== 'undefined' && module.exports) {
+	module.exports = HtmlSanitizer;
+}
