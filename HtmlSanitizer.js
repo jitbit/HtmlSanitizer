@@ -25,7 +25,7 @@ const HtmlSanitizer = new (function () {
 
 	const _parser = new DOMParser();
 
-	this.SanitizeHtml = function (input, extraSelector) {
+	this.SanitizeHtml = function (input, extraSelector, callback) {
 		input = input.trim();
 		if (input == "") return ""; //to save performance
 
@@ -46,7 +46,7 @@ const HtmlSanitizer = new (function () {
 			let newNode;
 			if (node.nodeType == Node.TEXT_NODE) {
 				newNode = node.cloneNode(true);
-			} else if (node.nodeType == Node.ELEMENT_NODE && (_tagWhitelist[node.tagName] || _contentTagWhiteList[node.tagName] || (extraSelector && node.matches(extraSelector)))) { //is tag allowed?
+			} else if (node.nodeType == Node.ELEMENT_NODE && (_tagWhitelist[node.tagName] || _contentTagWhiteList[node.tagName] || (extraSelector && node.matches(extraSelector))) && (!callback || callback(node))) { //is tag allowed?
 
 				if (_contentTagWhiteList[node.tagName])
 					newNode = doc.createElement('DIV'); //convert to DIV

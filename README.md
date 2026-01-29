@@ -96,6 +96,21 @@ To allow an extra tag only once during invocation - specify extra selector to al
 var html = HtmlSanitizer.SanitizeHtml("<input type=checkbox>", "input[type=checkbox]");
 ```
 
+### Using a callback for custom filtering
+
+You can provide a callback as the third parameter to perform custom filtering on elements that are otherwise allowed.
+
+```javascript
+var html = HtmlSanitizer.SanitizeHtml(
+    "<div><p>Hello</p><img src='test.jpg'></div>", 
+    null, 
+    function(node) {
+        return node.tagName !== 'IMG'; // Reject all images
+    }
+);
+// returns "<div><p>Hello</p></div>"
+```
+
 ## Browser support
 
 Supported by all major browsers, IE10 and higher.

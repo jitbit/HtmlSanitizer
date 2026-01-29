@@ -40,6 +40,7 @@
 		assert.equal(HtmlSanitizer.SanitizeHtml("<form>something</form>"), "<div>something</div>");
 		assert.equal(HtmlSanitizer.SanitizeHtml("<input type=checkbox>"), "");
 		assert.equal(HtmlSanitizer.SanitizeHtml("<input type=checkbox>", "input[type=checkbox]"), "<input type=\"checkbox\">");
+		assert.equal(HtmlSanitizer.SanitizeHtml("<div><p>Hello</p><img src='test.jpg'></div>", null, (node) => node.tagName !== 'IMG'), "<div><p>Hello</p></div>");
     });
     </script>
     </body>
