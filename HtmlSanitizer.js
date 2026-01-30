@@ -32,7 +32,7 @@ const HtmlSanitizer = new (function () {
 		//firefox "bogus node" workaround for wysiwyg's
 		if (input == "<br>") return "";
 
-		if (input.indexOf("<body")==-1) input = "<body>" + input + "</body>"; //add "body" otherwise some tags are skipped, like <style>
+		if (!/<body/i.test(input)) input = "<body>" + input + "</body>"; //add "body" otherwise some tags are skipped, like <style>
 
 		let doc = _parser.parseFromString(input, "text/html");
 
@@ -74,7 +74,7 @@ const HtmlSanitizer = new (function () {
 				}
 				for (let i = 0; i < node.childNodes.length; i++) {
 					let subCopy = makeSanitizedCopy(node.childNodes[i]);
-					newNode.appendChild(subCopy, false);
+					newNode.appendChild(subCopy);
 				}
 
 				//remove useless empty spans (lots of those when pasting from MS Outlook)
