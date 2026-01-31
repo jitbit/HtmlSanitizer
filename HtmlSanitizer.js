@@ -23,7 +23,7 @@ const HtmlSanitizer = new (function () {
 
 	const _uriAttributes = { 'href': true, 'action': true };
 
-	const _parser = new DOMParser();
+	let _parser;
 
 	this.SanitizeHtml = function (input, extraSelector, callback) {
 		input = input.trim();
@@ -34,6 +34,7 @@ const HtmlSanitizer = new (function () {
 
 		if (!/<body/i.test(input)) input = "<body>" + input + "</body>"; //add "body" otherwise some tags are skipped, like <style>
 
+		_parser ||= new DOMParser();
 		let doc = _parser.parseFromString(input, "text/html");
 
 		//DOM clobbering check (damn you firefox)
